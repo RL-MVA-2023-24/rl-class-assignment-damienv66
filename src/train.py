@@ -51,13 +51,13 @@ class ProjectAgent:
 
     def load(self):
         device = torch.device('cpu')
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model8.pt')
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model4.pt')
         self.model = self.dqn_agent({}, device)
         self.model.load_state_dict(torch.load(path, map_location=device))
         self.model.eval() 
     
     def save(self, path):
-        path =  os.path.join(path, 'model8.pt')
+        path =  os.path.join(path, 'model4.pt')
         torch.save(self.model.state_dict(), path) 
 
     
@@ -209,5 +209,5 @@ class ProjectAgent:
         path = os.path.dirname(os.path.abspath(__file__))
         self.save(path)
 
-        
+
         return episode_return
